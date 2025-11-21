@@ -29,6 +29,8 @@
 - [Help & Support](#-help--support)
 - [Legal Notice](#️-legal-notice)
 - [Author](#-author)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
 ---
 
