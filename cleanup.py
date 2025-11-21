@@ -7,6 +7,10 @@ Removes temporary files, cache, and old reports
 import os
 import shutil
 from pathlib import Path
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b1c10c7c7558461eaf16a8ccf8e7967cffbc467
 
 def cleanup_project():
     """Clean up temporary files and cache"""
