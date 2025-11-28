@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Astrava AI Security Scanner Installation Script
+# Vyoma AI Security Scanner Installation Script
 # Supports Linux and macOS
 
 set -e
 
-echo "🛡️  ASTRAVA AI SECURITY SCANNER - Installation"
+echo "🛡️  VYOMA AI SECURITY SCANNER - Installation"
 echo "================================================"
 
 # Colors for output
@@ -225,7 +225,7 @@ verify_installation() {
 # Main installation process
 main() {
     echo
-    print_status "Starting Astrava AI Security Scanner installation..."
+    print_status "Starting Vyoma AI Security Scanner installation..."
     echo
     
     # Check system requirements
@@ -248,26 +248,26 @@ main() {
     verify_installation
     
     echo
-    print_success "🎉 ASTRAVA Installation Completed Successfully!"
+    print_success "🎉 VYOMA Installation Completed Successfully!"
     echo
     echo "✅ All components verified and working correctly!"
     echo
     echo "📋 Quick Start Guide:"
     echo
     echo "  Launch GUI:"
-    echo "    $PYTHON_CMD astrava_gui.py"
-    echo "    $PYTHON_CMD astrava.py"
+    echo "    $PYTHON_CMD vyoma_gui.py"
+    echo "    $PYTHON_CMD vyoma.py"
     echo
     echo "  CLI Scans:"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org --basic"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org"
-    echo "    $PYTHON_CMD astrava.py -u https://httpbin.org --aggressive"
+    echo "    $PYTHON_CMD vyoma.py -u https://httpbin.org --basic"
+    echo "    $PYTHON_CMD vyoma.py -u https://httpbin.org"
+    echo "    $PYTHON_CMD vyoma.py -u https://httpbin.org --aggressive"
     echo
     echo "  Verify Installation Anytime:"
     echo "    $PYTHON_CMD verify_installation.py"
     echo
     echo "  Get Help:"
-    echo "    $PYTHON_CMD astrava.py --help"
+    echo "    $PYTHON_CMD vyoma.py --help"
     echo "    $PYTHON_CMD main.py --help"
     echo
     echo "⚠️  IMPORTANT: Only scan systems you own or have permission to test!"

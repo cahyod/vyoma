@@ -1,5 +1,5 @@
 """
-Main Scanner Engine for Astrava AI Security Scanner
+Main Scanner Engine for Vyoma AI Security Scanner
 Orchestrates all scanning modules and AI analysis
 """
 
@@ -19,7 +19,7 @@ from modules.chain_attacks import ChainAttackModule
 from utils.report_generator import ReportGenerator
 from utils.risk_calculator import RiskCalculator
 
-class AstravaAIScanner:
+class VyomaAIScanner:
     """Main scanner engine that orchestrates all modules"""
     
     def __init__(self, config: Config, logger: logging.Logger):

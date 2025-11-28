@@ -1,12 +1,12 @@
 @echo off
-REM Astrava AI Security Scanner Installation Script for Windows
+REM Vyoma AI Security Scanner Installation Script for Windows
 REM Requires Python 3.8+ and internet connection
 
 setlocal enabledelayedexpansion
 
 echo.
 echo ================================================================
-echo    🛡️  ASTRAVA AI SECURITY SCANNER - Installation (Windows)
+echo    🛡️  VYOMA AI SECURITY SCANNER - Installation (Windows)
 echo ================================================================
 echo.
 echo [INFO] Starting installation process...
@@ -131,7 +131,7 @@ echo [SUCCESS] All verification checks passed!
 
 echo.
 echo ================================================================
-echo    🎉 ASTRAVA Installation Completed Successfully!
+echo    🎉 VYOMA Installation Completed Successfully!
 echo ================================================================
 echo.
 echo ✅ All components verified and working correctly!
@@ -139,19 +139,19 @@ echo.
 echo 📋 Quick Start Guide:
 echo.
 echo   Launch GUI:
-echo     python astrava_gui.py
-echo     python astrava.py
+echo     python vyoma_gui.py
+echo     python vyoma.py
 echo.
 echo   CLI Scans:
-echo     python astrava.py -u https://httpbin.org --basic
-echo     python astrava.py -u https://httpbin.org
-echo     python astrava.py -u https://httpbin.org --aggressive
+echo     python vyoma.py -u https://httpbin.org --basic
+echo     python vyoma.py -u https://httpbin.org
+echo     python vyoma.py -u https://httpbin.org --aggressive
 echo.
 echo   Verify Installation Anytime:
 echo     python verify_installation.py
 echo.
 echo   Get Help:
-echo     python astrava.py --help
+echo     python vyoma.py --help
 echo     python main.py --help
 echo.
 echo ⚠️  IMPORTANT: Only scan systems you own or have permission to test!

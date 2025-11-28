@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Ultimate Professional Version
+Vyoma AI Security Scanner - Ultimate Professional Version
 Advanced GUI with large results display and proper encoding
 """
 
@@ -12,7 +12,7 @@ def print_banner():
     """Print professional banner"""
     print("""
 
-                    Astrava AI SECURITY SCANNER                        
+                    Vyoma AI SECURITY SCANNER
                    ULTIMATE PROFESSIONAL VERSION                     
                                                                       
   [OK] LARGE RESULTS DISPLAY (70% of screen)                          
@@ -32,7 +32,7 @@ def main():
     print_banner()
     
     if len(sys.argv) == 1 or '--gui' in sys.argv:
-        print(" Launching Astrava AI Security Scanner - Ultimate Professional GUI")
+        print(" Launching Vyoma AI Security Scanner - Ultimate Professional GUI")
         print()
         print("FEATURES:")
         print(" Large Results Display (1800x1200 window)")
@@ -46,11 +46,11 @@ def main():
         print()
         
         try:
-            from Astrava_advanced_gui import AstravaAdvancedGUI
+            from vyoma_gui import VyomaAdvancedGUI
             import tkinter as tk
             
             root = tk.Tk()
-            app = AstravaAdvancedGUI(root)
+            app = VyomaAdvancedGUI(root)
             root.mainloop()
             
         except ImportError as e:
@@ -105,15 +105,15 @@ def main():
     
     elif '--help' in sys.argv or '-h' in sys.argv:
         print("""
-Astrava AI SECURITY SCANNER - ULTIMATE VERSION
+Vyoma AI SECURITY SCANNER - ULTIMATE VERSION
 ============================================
 
 GUI MODE (Recommended):
-    python Astrava_ultimate.py
-    python Astrava_ultimate.py --gui
+    python Vyoma_ultimate.py
+    python Vyoma_ultimate.py --gui
 
 CLI MODE:
-    python Astrava_ultimate.py -u <URL> [OPTIONS]
+    python Vyoma_ultimate.py -u <URL> [OPTIONS]
 
 ATTACK MODES:
     --basic      [GREEN] Basic Scan (Fast)
@@ -132,16 +132,16 @@ OPTIONS:
 EXAMPLES:
 =========
 # Launch Ultimate GUI
-python Astrava_ultimate.py
+python Vyoma_ultimate.py
 
 # Basic CLI scan
-python Astrava_ultimate.py -u http://testphp.vulnweb.com/ --basic --verbose
+python Vyoma_ultimate.py -u http://testphp.vulnweb.com/ --basic --verbose
 
-# Aggressive CLI scan  
-python Astrava_ultimate.py -u http://testphp.vulnweb.com/ --aggressive --verbose
+# Aggressive CLI scan
+python Vyoma_ultimate.py -u http://testphp.vulnweb.com/ --aggressive --verbose
 
 # Medium CLI scan (default)
-python Astrava_ultimate.py -u http://testphp.vulnweb.com/ --verbose
+python Vyoma_ultimate.py -u http://testphp.vulnweb.com/ --verbose
 
 GUI FEATURES:
 ============

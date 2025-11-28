@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick Test Script for Astrava AI Security Scanner
+Quick Test Script for Vyoma AI Security Scanner
 Demonstrates key features with a safe test target
 """
 
@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from core.scanner_engine import AstravaAIScanner
+from core.scanner_engine import VyomaAIScanner
 from core.config import Config
 from utils.logger import setup_logger
 from utils.banner import display_banner
@@ -22,7 +22,7 @@ async def quick_test():
     
     display_banner()
     
-    print(" Running Quick Test of Astrava AI Security Scanner")
+    print(" Running Quick Test of Vyoma AI Security Scanner")
     print("=" * 60)
     print("Target: https://httpbin.org (safe test target)")
     print("Mode: Basic scan with AI analysis")
@@ -39,7 +39,7 @@ async def quick_test():
     
     try:
         # Initialize scanner
-        scanner = AstravaAIScanner(config, logger)
+        scanner = VyomaAIScanner(config, logger)
         
         # Run scan
         print("[SEARCH] Starting scan...")
@@ -87,7 +87,7 @@ async def quick_test():
 def show_features():
     """Display key features of the scanner"""
     
-    print("[SHIELD] Astrava AI SECURITY SCANNER - KEY FEATURES")
+    print("[SHIELD] Vyoma AI SECURITY SCANNER - KEY FEATURES")
     print("=" * 60)
     print()
     
@@ -141,7 +141,7 @@ def show_features():
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description="Astrava AI Security Scanner Quick Test")
+    parser = argparse.ArgumentParser(description="Vyoma AI Security Scanner Quick Test")
     parser.add_argument('--features', action='store_true', help='Show features only')
     parser.add_argument('--test', action='store_true', help='Run quick test')
     

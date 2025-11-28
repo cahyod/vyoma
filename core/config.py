@@ -1,5 +1,5 @@
 """
-Configuration module for Astrava AI Security Scanner
+Configuration module for Vyoma AI Security Scanner
 """
 
 import os

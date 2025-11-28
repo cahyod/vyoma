@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+    
+    environment {
+        OLLAMA_HOST = '127.0.0.1:11434'
+    }
+    
+    stages {
+        stage('Setup') {
+            steps {
+                script {
+                    // Install Ollama
+                    sh '''
+                        if ! command -v ollama &> /dev/null; then
+                            curl -fsSL https://ollama.ai/install.sh | sh
+                        fi
+                        nohup ollama serve > ollama.log 2>&1 &
+                        sleep 15
+                        ollama pull llama3.2:3b
+                    '''
+                }
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
+        stage('Security Scan') {
+            steps {
+                script {
+                    sh 'python vyoma.py -u ${TARGET_URL} --basic --report-format json'
+                }
+            }
+        }
+        
+        stage('Publish Results') {
+            steps {
+                script {
+                    sh '''
+                        if [ -f "reports/vyoma-report.json" ]; then
+                            echo "Security scan completed. Results available in reports/"
+                            cat reports/vyoma-report.json | jq '.vulnerabilities | length'
+                        else
+                            echo "No security report generated"
+                            sh 'exit 1'
+                        fi
+                    '''
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'reports/**/*', fingerprint: true
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Cleanup
+            sh '''
+                if pgrep -f "ollama serve"; then
+                    pkill -f "ollama serve"
+                fi
+            '''
+        }
+    }
+}

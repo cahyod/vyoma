@@ -1,14 +1,14 @@
 <div align="center">
 
-![Astrava Logo](logo.png)
+![Vyoma Logo](logo.png)
 
-# ASTRAVA AI Security Scanner
+# VYOMA AI Security Scanner
 
 ### Professional AI-Powered Web Application Security Testing Platform
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/ram-prasad-sahoo/astrava)
+[![Version](https://img.shields.io/badge/version-v1.0.0-orange.svg)](https://github.com/cahyod/vyoma)
 
 **Enterprise-grade security scanner combining traditional penetration testing with AI analysis**
 
@@ -18,12 +18,18 @@
 
 ## 📖 Table of Contents
 
-- [What is ASTRAVA?](#-what-is-astrava)
+- [What is VYOMA?](#-what-is-vyoma)
 - [Key Features](#-key-features)
 - [System Requirements](#-system-requirements)
 - [Installation](#-installation)
 - [How to Run](#-how-to-run)
 - [Usage Examples](#-usage-examples)
+  - [Example 1: Quick Security Check](#example-1-quick-security-check)
+  - [Example 2: Standard Security Assessment](#example-2-standard-security-assessment)
+  - [Example 3: Thorough Security Audit](#example-3-thorough-security-audit)
+  - [Example 4: Custom Testing](#example-4-custom-testing)
+  - [Example 5: CI/CD Pipeline Integration](#example-5-cicd-pipeline-integration)
+  - [Test Targets (For Practice)](#test-targets-for-practice)
 - [Scan Modes](#-scan-modes)
 - [Troubleshooting](#-troubleshooting)
 - [Help & Support](#-help--support)
@@ -34,24 +40,25 @@
 
 ---
 
-## 🎯 What is ASTRAVA?
+## 🎯 What is VYOMA?
 
-**ASTRAVA** (Advanced Security Testing & Risk Assessment with Vulnerability Analysis) is a professional-grade AI-powered web application security scanner designed for:
+**VYOMA** (Advanced Security Testing & Risk Assessment with Vulnerability Analysis) is a professional-grade AI-powered web application security scanner designed for:
 
 - 🔒 **Security Professionals** - Comprehensive penetration testing
 - 👨‍💻 **Developers** - Pre-deployment security checks
 - 🏢 **Organizations** - Regular security assessments
 - 🎓 **Students** - Learning security testing
 
-### Why Choose ASTRAVA?
+### Why Choose VYOMA?
 
-ASTRAVA combines traditional vulnerability scanning with cutting-edge AI technology to provide:
+VYOMA combines traditional vulnerability scanning with cutting-edge AI technology to provide:
 
-✅ **Intelligent Analysis** - AI-powered vulnerability detection using LLaMA 3.2  
-✅ **OWASP Coverage** - Complete OWASP Top 10 2021 testing  
-✅ **Multiple Modes** - Basic, Medium, and Aggressive scanning  
-✅ **Detailed Reports** - Beautiful HTML reports with risk scoring  
-✅ **Easy to Use** - Simple installation and intuitive interface  
+✅ **Intelligent Analysis** - AI-powered vulnerability detection using LLaMA 3.2
+✅ **OWASP Coverage** - Complete OWASP Top 10 2021 testing
+✅ **Multiple Modes** - Basic, Medium, and Aggressive scanning
+✅ **Detailed Reports** - Beautiful HTML reports with risk scoring
+✅ **Easy to Use** - Simple installation and intuitive interface
+✅ **DevSecOps Integration** - Seamless CI/CD pipeline integration with security gates
 
 ---
 
@@ -90,6 +97,14 @@ ASTRAVA combines traditional vulnerability scanning with cutting-edge AI technol
 - **Multiple Views** - Console, Vulnerabilities, Summary, AI Analysis
 - **Export Options** - HTML and JSON reports
 
+### 🔄 DevSecOps Integration
+
+- **CI/CD Pipeline Integration** - Ready-to-use configurations for GitHub Actions, GitLab CI, and Jenkins
+- **Security Gates** - Automated pipeline failures based on vulnerability thresholds
+- **Shift-Left Security** - Catch vulnerabilities early in development cycle
+- **Artifact Archiving** - Compliance reporting and review capabilities
+- **Environment Configuration** - Easy setup through environment variables
+
 ---
 
 ## 💻 System Requirements
@@ -107,7 +122,7 @@ ASTRAVA combines traditional vulnerability scanning with cutting-edge AI technol
 
 ### ✅ Tested On
 
-ASTRAVA has been tested and works perfectly on:
+VYOMA has been tested and works perfectly on:
 - ✅ **Kali Linux** (2023.x and later)
 - ✅ **Parrot Security OS** (5.x and later)
 - ✅ **Ubuntu** (20.04, 22.04, 24.04)
@@ -130,8 +145,8 @@ ASTRAVA has been tested and works perfectly on:
 
 **Step 1: Clone the Repository**
 ```bash
-git clone https://github.com/ram-prasad-sahoo/astrava.git
-cd astrava
+git clone https://github.com/ram-prasad-sahoo/vyoma.git
+cd vyoma
 ```
 
 **Step 2: Run the Installer**
@@ -211,12 +226,12 @@ python verify_installation.py
 
 **Launch Professional GUI:**
 ```bash
-python astrava_gui.py
+python vyoma_gui.py
 ```
 
 Or use the main launcher:
 ```bash
-python astrava.py
+python vyoma.py
 ```
 
 **GUI Features:**
@@ -230,16 +245,16 @@ python astrava.py
 **Basic Commands:**
 ```bash
 # Show help
-python astrava.py --help
+python vyoma.py --help
 
 # Basic scan (Fast)
-python astrava.py -u https://example.com --basic
+python vyoma.py -u https://example.com --basic
 
 # Medium scan (Standard)
-python astrava.py -u https://example.com
+python vyoma.py -u https://example.com
 
 # Aggressive scan (Thorough)
-python astrava.py -u https://example.com --aggressive
+python vyoma.py -u https://example.com --aggressive
 ```
 
 **Advanced Commands:**
@@ -265,7 +280,7 @@ python main.py -u https://example.com --verbose --format json
 
 ```bash
 # Fast scan for quick assessment
-python astrava.py -u http://testphp.vulnweb.com/ --basic
+python vyoma.py -u http://testphp.vulnweb.com/ --basic
 ```
 
 **Use Case:** Quick initial assessment before detailed testing
@@ -274,7 +289,7 @@ python astrava.py -u http://testphp.vulnweb.com/ --basic
 
 ```bash
 # Medium scan with OWASP Top 10
-python astrava.py -u http://demo.testfire.net/
+python vyoma.py -u http://demo.testfire.net/
 ```
 
 **Use Case:** Regular security testing and compliance checks
@@ -283,7 +298,7 @@ python astrava.py -u http://demo.testfire.net/
 
 ```bash
 # Aggressive scan with all features
-python astrava.py -u https://example.com --aggressive --verbose
+python vyoma.py -u https://example.com --aggressive --verbose
 ```
 
 **Use Case:** Pre-production security audit and penetration testing
@@ -298,17 +313,35 @@ python main.py -u https://example.com --owasp-all --chain-attacks \
 
 **Use Case:** Specialized testing with custom attack vectors
 
+### Example 5: CI/CD Pipeline Integration
+
+```bash
+# Run security scan in CI/CD pipeline with thresholds
+python vyoma_cicd_integration.py --target https://staging.example.com --mode basic --threshold-critical 0 --threshold-high 5
+
+# Using environment variables
+export VYOMA_TARGET_URL=https://staging.example.com
+export VYOMA_THRESHOLD_CRITICAL=0
+export VYOMA_THRESHOLD_HIGH=3
+python vyoma_cicd_integration.py
+
+# Initialize CI/CD configuration for GitHub Actions
+python setup_cicd.py github --target-url https://example.com
+```
+
+**Use Case:** DevSecOps integration with security gates in deployment pipelines
+
 ### Test Targets (For Practice)
 
 ```bash
 # Vulnerable PHP application
-python astrava.py -u http://testphp.vulnweb.com/
+python vyoma.py -u http://testphp.vulnweb.com/
 
 # Banking demo application
-python astrava.py -u http://demo.testfire.net/
+python vyoma.py -u http://demo.testfire.net/
 
 # HTTP testing service
-python astrava.py -u https://httpbin.org/
+python vyoma.py -u https://httpbin.org/
 ```
 
 ---
@@ -332,7 +365,7 @@ python astrava.py -u https://httpbin.org/
 
 **Command:**
 ```bash
-python astrava.py -u <URL> --basic
+python vyoma.py -u <URL> --basic
 ```
 
 ### 🔍 Medium Scan (Default)
@@ -352,7 +385,7 @@ python astrava.py -u <URL> --basic
 
 **Command:**
 ```bash
-python astrava.py -u <URL>
+python vyoma.py -u <URL>
 ```
 
 ### 🔥 Aggressive Scan
@@ -372,7 +405,7 @@ python astrava.py -u <URL>
 
 **Command:**
 ```bash
-python astrava.py -u <URL> --aggressive
+python vyoma.py -u <URL> --aggressive
 ```
 
 ---
@@ -509,8 +542,8 @@ This will check:
 **Python Command:**
 ```bash
 # Kali/Parrot usually use python3
-python3 astrava.py --help
-python3 astrava_gui.py
+python3 vyoma.py --help
+python3 vyoma_gui.py
 ```
 
 **If pip not found:**
@@ -554,13 +587,13 @@ ollama serve &
 ollama pull llama3.2:3b
 ```
 
-**3. Run ASTRAVA:**
+**3. Run VYOMA:**
 ```bash
 # Launch GUI
-python3 astrava_gui.py
+python3 vyoma_gui.py
 
 # Or use CLI
-python3 astrava.py -u http://testphp.vulnweb.com/ --basic
+python3 vyoma.py -u http://testphp.vulnweb.com/ --basic
 ```
 
 ### Kali/Parrot Specific Commands
@@ -580,35 +613,35 @@ pip3 install aiohttp requests dnspython beautifulsoup4 lxml
 **Run as Root (Not Recommended):**
 ```bash
 # If you must run as root
-sudo python3 astrava.py -u <URL>
+sudo python3 vyoma.py -u <URL>
 ```
 
 **Add to PATH (Optional):**
 ```bash
 # Add alias to .bashrc or .zshrc
-echo "alias astrava='python3 ~/path/to/astrava.py'" >> ~/.bashrc
+echo "alias vyoma='python3 ~/path/to/vyoma.py'" >> ~/.bashrc
 source ~/.bashrc
 
 # Now you can run:
-astrava -u <URL>
+vyoma -u <URL>
 ```
 
 ### Integration with Kali Tools
 
-ASTRAVA works alongside other Kali tools:
+VYOMA works alongside other Kali tools:
 
 ```bash
 # Use with nmap results
 nmap -sV target.com -oX scan.xml
-python3 astrava.py -u http://target.com
+python3 vyoma.py -u http://target.com
 
 # Use with nikto
 nikto -h target.com
-python3 astrava.py -u http://target.com --aggressive
+python3 vyoma.py -u http://target.com --aggressive
 
 # Use with burpsuite
-# Export targets from Burp and scan with ASTRAVA
-python3 astrava.py -u http://target.com --owasp-all
+# Export targets from Burp and scan with VYOMA
+python3 vyoma.py -u http://target.com --owasp-all
 ```
 
 ### Performance Tips for Kali/Parrot
@@ -616,16 +649,16 @@ python3 astrava.py -u http://target.com --owasp-all
 **Optimize for VM:**
 ```bash
 # If running in VM, reduce threads
-python3 astrava.py -u <URL> --threads 5
+python3 vyoma.py -u <URL> --threads 5
 
 # Increase timeout for slow connections
-python3 astrava.py -u <URL> --timeout 60
+python3 vyoma.py -u <URL> --timeout 60
 ```
 
 **Save Resources:**
 ```bash
 # Use basic scan for quick checks
-python3 astrava.py -u <URL> --basic
+python3 vyoma.py -u <URL> --basic
 
 # Close other applications
 # Allocate at least 4GB RAM to VM
@@ -640,7 +673,7 @@ python3 astrava.py -u <URL> --basic
 **Command Line Help:**
 ```bash
 # Main launcher help
-python astrava.py --help
+python vyoma.py --help
 
 # Advanced options help
 python main.py --help
@@ -653,20 +686,20 @@ python verify_installation.py
 
 ### Contact & Support
 
-- 📧 **Email**: ramprasadsahoo42@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/ram-prasad-sahoo/astrava/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/ram-prasad-sahoo/astrava/discussions)
+- 📧 **Email**: cahyod@yahoo.co.id
+- 🐛 **Issues**: [GitHub Issues](https://github.com/cahyod/vyoma/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/cahyod/vyoma/discussions)
 
 ### Frequently Asked Questions
 
-**Q: Is ASTRAVA free to use?**  
-A: Yes, ASTRAVA is open-source and free under MIT License.
+**Q: Is VYOMA free to use?**
+A: Yes, VYOMA is open-source and free under MIT License.
 
-**Q: Can I use it for commercial purposes?**  
+**Q: Can I use it for commercial purposes?**
 A: Yes, but only on systems you own or have permission to test.
 
-**Q: Does it work on Windows?**  
-A: Yes, ASTRAVA supports Windows, Linux, and macOS.
+**Q: Does it work on Windows?**
+A: Yes, VYOMA supports Windows, Linux, and macOS.
 
 **Q: How much does the AI model cost?**  
 A: The LLaMA model is free and runs locally via Ollama.
@@ -678,9 +711,9 @@ A: Yes, use `--custom-payloads` option with your payload file.
 A: Yes, but only use on authorized systems. Unauthorized scanning is illegal.
 
 **Q: Does it work on Kali Linux?**  
-A: Yes! ASTRAVA works perfectly on Kali Linux, Parrot OS, and all Debian-based distributions.
+A: Yes! VYOMA works perfectly on Kali Linux, Parrot OS, and all Debian-based distributions.
 
-**Q: Can I run it in a VM?**  
+**Q: Can I run it in a VM?**
 A: Yes, but allocate at least 4GB RAM and 10GB storage for best performance.
 
 ---
@@ -689,7 +722,7 @@ A: Yes, but allocate at least 4GB RAM and 10GB storage for best performance.
 
 **⚠️ IMPORTANT: Authorized Use Only**
 
-ASTRAVA is designed for authorized security testing and educational purposes only.
+VYOMA is designed for authorized security testing and educational purposes only.
 
 **Legal Requirements:**
 
@@ -725,11 +758,11 @@ If you discover vulnerabilities:
 
 ## 👨‍💻 Author
 
-**Made with ❤️ by RAM**
+**Made with ❤️ by Cahyo Darujati**
 
-**Developer:** Ram Prasad Sahoo  
-**Email:** ramprasadsahoo42@gmail.com  
-**GitHub:** [@ram-prasad-sahoo](https://github.com/ram-prasad-sahoo)
+**Developer:** Cahyo Darujati
+**Email:** cahyod@yahoo.co.id
+**GitHub:** [@cahyod](https://github.com/cahyod)
 
 *Empowering security professionals with AI-driven vulnerability assessment*
 
@@ -747,10 +780,56 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Meta AI** - For LLaMA models
 - **OWASP** - For security testing standards
 - **Security Community** - For continuous feedback
+- **Cybersecurity Indonesia** - For professional support and guidance
 
 ---
 
-© 2025 RAM (Ram Prasad Sahoo). All rights reserved.
+## **2-Year Feature Development Plan**
 
-**Version:** v1.0.0  
+### **Phase 1: Core Enhancement (Months 1-6)**
+- **Microservices Architecture**: Breaking down monolithic codebase into modular services
+- **Plugin System**: Framework for adding new vulnerability detection methods
+- **Advanced AI**: Integration of OpenAI, Anthropic, and local models
+- **Performance Optimization**: Improved speed and resource efficiency
+- **✅ DevSecOps Pipeline Integration**: Seamless integration with CI/CD platforms (GitHub Actions, GitLab CI, Jenkins) with security gates to prevent vulnerable code deployment
+
+### **Phase 2: Advanced Features and Reporting (Months 4-10)**
+- **Smart Attack Path Mapping**: Automated vulnerability chaining algorithms
+- **Enterprise Reporting & Analytics**: Custom report templates and real-time dashboards
+- **Threat Intelligence Integration**: Integration with external threat feeds
+- **Automated Remediation Guidance**: Vulnerability repair guidance
+
+### **Phase 3: Platform Expansion (Months 7-14)**
+- **Cloud Security Assessment**: Support for AWS, Azure, GCP
+- **DevSecOps Integration**: Enhanced CI/CD pipeline capabilities and platform support
+- **Mobile Application Security**: Static and dynamic mobile app analysis
+- **Container & Serverless Security**: Docker and Kubernetes security assessment
+
+### **Phase 4: Advanced Intelligence & Operations (Months 10-18)**
+- **Behavioral Analysis & Anomaly Detection**: Machine learning for threat detection
+- **Automated Remediation Guidance**: Repair guidance based on vulnerabilities
+- **Advanced Visualization & Collaboration**: Network mapping and workflow tools
+
+### **Phase 5: Future Technologies (Months 15-24)**
+- **Quantum-Resistant Assessment**: Evaluation for post-quantum cryptography readiness
+- **IoT and Industrial Security**: IoT device security assessment modules
+- **Predictive Security Analytics**: Predictive models for threat trends
+
+### **Secure Code Checking Integration**
+Static code analysis (SAST) feature will be added to analyze vulnerabilities in source code before deployment, supporting multiple programming languages and providing repair recommendations for developers.
+
+### **DevSecOps Pipeline Integration - Implemented Feature**
+VYOMA now includes comprehensive DevSecOps integration with:
+- Ready-to-use configuration files for GitHub Actions, GitLab CI, and Jenkins
+- Security gate functionality that can fail CI/CD pipelines based on vulnerability thresholds
+- Easy setup through environment variables and configuration files
+- Artifact archiving for compliance and review
+- Support for multiple scan modes (basic, medium, aggressive)
+- Shift-left security practices by catching vulnerabilities early in the development cycle
+
+---
+
+© 2025 Cahyo Darujati. All rights reserved.
+
+**Version:** v1.0.0
 **Last Updated:** November 2025

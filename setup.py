@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Setup script for Astrava AI Security Scanner
+Setup script for Vyoma AI Security Scanner
 """
 
 from setuptools import setup, find_packages
@@ -22,14 +22,14 @@ if requirements_file.exists():
         ]
 
 setup(
-    name="Astrava-ai-security-scanner",
+    name="Vyoma-ai-security-scanner",
     version="1.0.0",
-    author="RAM (Ram Prasad Sahoo)",
-    author_email="ramprasadsahoo42@gmail.com",
+    author="Cahyo Darujati",
+    author_email="cahyod@yahoo.co.id",
     description="Advanced AI-Powered Web Security Scanner with OWASP Top 10 Coverage",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ram-prasad-sahoo/astrava",
+    url="https://github.com/cahyod/vyoma",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -47,15 +47,16 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "Astrava-scanner=main:main",
+            "Vyoma-scanner=main:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "Astrava_ai_security_scanner": [
+        "Vyoma_ai_security_scanner": [
             "templates/*",
             "payloads/*",
             "wordlists/*",
+            "cicd_configs/*",
         ],
     },
     keywords=[
@@ -63,8 +64,8 @@ setup(
         "web-security", "ethical-hacking", "security-assessment", "llama", "ollama"
     ],
     project_urls={
-        "Bug Reports": "https://github.com/ram-prasad-sahoo/astrava/issues",
-        "Source": "https://github.com/ram-prasad-sahoo/astrava",
-        "Documentation": "https://Astrava-scanner.readthedocs.io/",
+        "Bug Reports": "https://github.com/cahyod/vyoma/issues",
+        "Source": "https://github.com/cahyod/vyoma",
+        "Documentation": "https://Vyoma-scanner.readthedocs.io/",
     },
 )

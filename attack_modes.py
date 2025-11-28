@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Attack Modes System
+Vyoma AI Security Scanner - Attack Modes System
 Defines Basic, Medium, and Aggressive attack configurations
 """
 
@@ -9,8 +9,8 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 
-class AstravaAttackModes:
-    """Attack modes configuration for Astrava AI Security Scanner"""
+class VyomaAttackModes:
+    """Attack modes configuration for Vyoma AI Security Scanner"""
     
     def __init__(self):
         self.modes = {
@@ -55,7 +55,7 @@ class AstravaAttackModes:
         
         # Safe print without Unicode
         print("=" * 70)
-        print(f"Astrava AI SECURITY SCANNER - {config['name'].upper()}")
+        print(f"Vyoma AI SECURITY SCANNER - {config['name'].upper()}")
         print("=" * 70)
         print(f"Target: {target_url}")
         print(f"Mode: {config['name']}")
@@ -135,7 +135,7 @@ def main():
     """Main function for attack modes"""
     import argparse
     
-    parser = argparse.ArgumentParser(description='Astrava AI Security Scanner - Attack Modes')
+    parser = argparse.ArgumentParser(description='Vyoma AI Security Scanner - Attack Modes')
     parser.add_argument('-u', '--url', required=True, help='Target URL to scan')
     parser.add_argument('-m', '--mode', choices=['basic', 'medium', 'aggressive'], 
                        default='medium', help='Attack mode')
@@ -149,12 +149,12 @@ def main():
     args = parser.parse_args()
     
     # Create attack modes instance
-    attack_modes = AstravaAttackModes()
+    attack_modes = VyomaAttackModes()
     
     # Show mode information
     config = attack_modes.get_mode_config(args.mode)
     print()
-    print("Astrava AI SECURITY SCANNER - ATTACK MODES")
+    print("Vyoma AI SECURITY SCANNER - ATTACK MODES")
     print("=" * 50)
     print("Available Modes:")
     for mode_key, mode_config in attack_modes.modes.items():

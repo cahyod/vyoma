@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Main Launcher
-Clean, simple launcher for the Astrava security scanner
+Vyoma AI Security Scanner - Main Launcher
+Clean, simple launcher for the Vyoma security scanner
 """
 
 import sys
@@ -13,7 +13,7 @@ def main():
     
     print("""
 
-                    ASTRAVA AI SECURITY SCANNER                        
+                    VYOMA AI SECURITY SCANNER
                       Professional Edition                            
                                                                       
   [TARGET] 3 Attack Modes: Basic, Medium, Aggressive                      
@@ -32,11 +32,11 @@ def main():
         print()
         
         try:
-            from astrava_gui import AstravaAdvancedGUI
+            from vyoma_gui import VyomaAdvancedGUI
             import tkinter as tk
             
             root = tk.Tk()
-            app = AstravaAdvancedGUI(root)
+            app = VyomaAdvancedGUI(root)
             root.mainloop()
             return 0
             
@@ -78,12 +78,12 @@ def main():
         print("""
 ========================================================================
                                                                        
-     ASTRAVA AI SECURITY SCANNER v1.0                                 
+     VYOMA AI SECURITY SCANNER v1.0                                 
      Professional Edition - Main Launcher                             
                                                                        
 ========================================================================
 
-ASTRAVA - Professional AI-Powered Web Application Security Scanner
+VYOMA - Professional AI-Powered Web Application Security Scanner
 Simplified launcher with three attack modes for easy scanning
 
 ========================================================================
@@ -91,11 +91,11 @@ USAGE:
 ========================================================================
 
 GUI Mode (Recommended):
-  python astrava.py                    # Launch professional GUI interface
-  python astrava_gui.py                # Direct GUI launch
+  python vyoma.py                    # Launch professional GUI interface
+  python vyoma_gui.py                # Direct GUI launch
 
 CLI Mode:
-  python astrava.py -u <URL> [OPTIONS]
+  python vyoma.py -u <URL> [OPTIONS]
 
 ========================================================================
 ATTACK MODES:
@@ -108,7 +108,7 @@ ATTACK MODES:
              - OWASP Top 10: OFF by default
              - Chain Attacks: Not available
    Best for: Quick initial assessment, time-sensitive scans
-   Command:  python astrava.py -u <URL> --basic
+   Command:  python vyoma.py -u <URL> --basic
 
 [MEDIUM SCAN] (default)
    Speed: Standard
@@ -117,7 +117,7 @@ ATTACK MODES:
              - OWASP Top 10: ON by default
              - Chain Attacks: Optional
    Best for: Standard security assessment, regular testing
-   Command:  python astrava.py -u <URL>
+   Command:  python vyoma.py -u <URL>
 
 [AGGRESSIVE SCAN] (--aggressive)
    Speed: Thorough
@@ -126,7 +126,7 @@ ATTACK MODES:
              - OWASP Top 10: ON by default
              - Chain Attacks: ON by default
    Best for: Thorough security audit, pre-production testing
-   Command:  python astrava.py -u <URL> --aggressive
+   Command:  python vyoma.py -u <URL> --aggressive
 
 ========================================================================
 OPTIONS:
@@ -143,24 +143,24 @@ EXAMPLES:
 ========================================================================
 
 Launch GUI:
-  python astrava.py
+  python vyoma.py
 
 Basic Scan (Fast):
-  python astrava.py -u http://testphp.vulnweb.com/ --basic
+  python vyoma.py -u http://testphp.vulnweb.com/ --basic
 
 Medium Scan (Recommended):
-  python astrava.py -u http://testphp.vulnweb.com/
+  python vyoma.py -u http://testphp.vulnweb.com/
 
 Aggressive Scan (Thorough):
-  python astrava.py -u http://testphp.vulnweb.com/ --aggressive
+  python vyoma.py -u http://testphp.vulnweb.com/ --aggressive
 
 Verbose Output:
-  python astrava.py -u http://testphp.vulnweb.com/ --verbose
+  python vyoma.py -u http://testphp.vulnweb.com/ --verbose
 
 Test Targets (For Practice):
-  python astrava.py -u http://testphp.vulnweb.com/      # Vulnerable PHP app
-  python astrava.py -u http://demo.testfire.net/        # Banking demo
-  python astrava.py -u https://httpbin.org/             # HTTP testing
+  python vyoma.py -u http://testphp.vulnweb.com/      # Vulnerable PHP app
+  python vyoma.py -u http://demo.testfire.net/        # Banking demo
+  python vyoma.py -u https://httpbin.org/             # HTTP testing
 
 ========================================================================
 ADVANCED OPTIONS:
@@ -189,13 +189,13 @@ SUPPORT & DOCUMENTATION:
   Documentation: README.md
   Installation:  docs/INSTALLATION_GUIDE.md
   Commands:      docs/CLI_COMMANDS.md
-  Issues:        https://github.com/ram-prasad-sahoo/astrava/issues
-  Email:         ramprasadsahoo42@gmail.com
+  Issues:        https://github.com/cahyod/vyoma/issues
+  Email:         cahyod@yahoo.co.id
 
 ========================================================================
 
-Made with Love by RAM (Ram Prasad Sahoo)
-Email: ramprasadsahoo42@gmail.com
+Made with Love by Cahyo Darujati
+Email: cahyod@yahoo.co.id
         """)
         return 0
     

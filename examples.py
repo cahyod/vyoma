@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Usage Examples
+Vyoma AI Security Scanner - Usage Examples
 Demonstrates various scanning scenarios and configurations
 """
 
@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from core.scanner_engine import AstravaAIScanner
+from core.scanner_engine import VyomaAIScanner
 from core.config import Config
 from utils.logger import setup_logger
 from utils.banner import display_banner
@@ -33,7 +33,7 @@ async def example_basic_scan():
     )
     
     # Run scan
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     results = await scanner.run_full_scan()
     
     print(f"[OK] Basic scan completed!")
@@ -59,7 +59,7 @@ async def example_owasp_comprehensive():
     )
     
     # Run scan
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     results = await scanner.run_full_scan()
     
     print(f"[OK] OWASP scan completed!")
@@ -83,7 +83,7 @@ async def example_passive_only():
     )
     
     # Run scan
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     results = await scanner.run_passive_scan()
     
     print(f"[OK] Passive scan completed!")
@@ -106,7 +106,7 @@ async def example_custom_model():
     )
     
     # Run scan
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     results = await scanner.run_full_scan()
     
     print(f"[OK] Custom model scan completed!")
@@ -129,7 +129,7 @@ async def example_json_output():
     )
     
     # Run scan
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     results = await scanner.run_full_scan()
     
     print(f"[OK] JSON scan completed!")
@@ -138,7 +138,7 @@ async def example_json_output():
 def print_usage_examples():
     """Print command-line usage examples"""
     print("=" * 80)
-    print("Astrava AI SECURITY SCANNER - COMMAND LINE EXAMPLES")
+    print("Vyoma AI SECURITY SCANNER - COMMAND LINE EXAMPLES")
     print("=" * 80)
     print()
     
@@ -195,7 +195,7 @@ async def run_all_examples():
     """Run all examples sequentially"""
     display_banner()
     
-    print(" Running Astrava AI Security Scanner Examples")
+    print(" Running Vyoma AI Security Scanner Examples")
     print("[WARNING]  These examples use test targets - ensure you have permission!")
     print()
     
@@ -224,7 +224,7 @@ async def run_comprehensive_examples():
     """Run comprehensive examples (longer running)"""
     display_banner()
     
-    print(" Running Comprehensive Astrava Examples")
+    print(" Running Comprehensive Vyoma Examples")
     print("[WARNING]  These examples may take longer to complete")
     print()
     
@@ -246,7 +246,7 @@ def main():
     """Main example runner"""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Astrava AI Security Scanner Examples")
+    parser = argparse.ArgumentParser(description="Vyoma AI Security Scanner Examples")
     parser.add_argument('--comprehensive', action='store_true', 
                        help='Run comprehensive examples (longer)')
     parser.add_argument('--commands', action='store_true',

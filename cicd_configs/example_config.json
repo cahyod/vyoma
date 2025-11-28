@@ -1,0 +1,11 @@
+{
+  "target_url": "https://example.com",
+  "scan_mode": "medium",
+  "report_format": "json",
+  "output_dir": "./reports",
+  "threshold_critical": 0,
+  "threshold_high": 5,
+  "timeout": 3600,
+  "threads": 10,
+  "verbose": true
+}

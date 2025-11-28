@@ -75,3 +75,4 @@ models/
 # Custom payloads (may contain sensitive data)
 payloads/custom_*.txt
 payloads/private_*.txt
+vyoma_env/

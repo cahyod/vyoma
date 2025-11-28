@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fast Astrava AI Security Scanner
+Fast Vyoma AI Security Scanner
 Optimized version with minimal AI usage for faster scanning
 """
 
@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from core.scanner_engine import AstravaAIScanner
+from core.scanner_engine import VyomaAIScanner
 from core.config import Config
 from utils.logger import setup_logger
 from utils.banner import display_banner
@@ -23,7 +23,7 @@ async def fast_scan(target_url: str):
     
     display_banner()
     
-    print("BASIC/FAST Astrava AI SECURITY SCANNER")
+    print("BASIC/FAST Vyoma AI SECURITY SCANNER")
     print("=" * 70)
     print(f"Target: {target_url}")
     print("Mode: Basic/Fast scan - Quick vulnerability detection")
@@ -59,7 +59,7 @@ async def fast_scan(target_url: str):
     
     try:
         # Initialize scanner
-        scanner = AstravaAIScanner(config, logger)
+        scanner = VyomaAIScanner(config, logger)
         
         print("STARTING FAST SCAN...")
         print("=" * 70)
@@ -127,7 +127,7 @@ def main():
     """Main function"""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Fast Astrava AI Security Scanner")
+    parser = argparse.ArgumentParser(description="Fast Vyoma AI Security Scanner")
     parser.add_argument('-u', '--url', required=True, help='Target URL to scan')
     
     args = parser.parse_args()

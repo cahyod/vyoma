@@ -1,5 +1,5 @@
 """
-AI Engine for Astrava Security Scanner
+AI Engine for Vyoma Security Scanner
 Handles all AI-related operations using Ollama
 """
 

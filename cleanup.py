@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Cleanup Utility
+Vyoma AI Security Scanner - Cleanup Utility
 Removes temporary files, cache, and old reports
 """
 
 import os
 import shutil
 from pathlib import Path
-<<<<<<< HEAD
-=======
-
->>>>>>> 5b1c10c7c7558461eaf16a8ccf8e7967cffbc467
 
 def cleanup_project():
     """Clean up temporary files and cache"""
-    print("🧹 Astrava AI Scanner - Cleanup Utility")
+    print("🧹 Vyoma AI Scanner - Cleanup Utility")
     print("=" * 40)
     
     cleanup_items = [
@@ -88,4 +84,4 @@ if __name__ == "__main__":
     print("\n" + "=" * 40)
     cleanup_reports()
     
-    print("\n✨ Astrava AI Scanner is now clean and optimized!")
+    print("\n✨ Vyoma AI Scanner is now clean and optimized!")

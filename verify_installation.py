@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ASTRAVA AI Security Scanner - Installation Verification Script
+VYOMA AI Security Scanner - Installation Verification Script
 Checks if all dependencies are properly installed
 """
 
@@ -10,7 +10,7 @@ import subprocess
 def print_header():
     """Print verification header"""
     print("\n" + "="*70)
-    print("  ASTRAVA AI SECURITY SCANNER - Installation Verification")
+    print("  VYOMA AI SECURITY SCANNER - Installation Verification")
     print("="*70 + "\n")
 
 def check_python_version():
@@ -161,9 +161,9 @@ def print_summary(results):
     if all(results.values()):
         print("\n  ✅ ALL CHECKS PASSED - Installation is complete!")
         print("\n  You can now run:")
-        print("     python astrava_gui.py    # Launch GUI")
-        print("     python astrava.py        # Launch GUI")
-        print("     python astrava.py --help # View CLI options")
+        print("     python vyoma_gui.py    # Launch GUI")
+        print("     python vyoma.py        # Launch CLI")
+        print("     python vyoma.py --help # View CLI options")
     else:
         print("\n  ❌ SOME CHECKS FAILED - Please fix the issues above")
         print("\n  Run the installer again:")

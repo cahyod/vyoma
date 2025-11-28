@@ -1,0 +1,50 @@
+name: VYOMA Security Scan
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Ollama
+      run: |
+        curl -fsSL https://ollama.ai/install.sh | sh &
+        sleep 10  # Wait for Ollama to start
+
+    - name: Pull LLaMA model
+      run: |
+        ollama pull llama3.2:3b
+
+    - name: Install VYOMA dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run VYOMA security scan
+      run: |
+        python vyoma.py -u ${{ secrets.TARGET_URL }} --basic --report-format json
+
+    - name: Archive security scan results
+      uses: actions/upload-artifact@v3
+      with:
+        name: vyoma-scan-results
+        path: reports/
+        
+    - name: Check for critical vulnerabilities
+      run: |
+        # Add script to parse results and fail if critical issues found
+        echo "Checking for critical vulnerabilities..."
+        # Implement logic to check results for critical issues

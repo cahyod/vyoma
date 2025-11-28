@@ -1,5 +1,5 @@
 """
-Risk Calculator for Astrava AI Security Scanner
+Risk Calculator for Vyoma AI Security Scanner
 Calculates comprehensive risk scores based on vulnerabilities and reconnaissance data
 """
 

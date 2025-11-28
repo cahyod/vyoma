@@ -1,0 +1,29 @@
+stages:
+  - security
+
+variables:
+  OLLAMA_HOST: 127.0.0.1:11434
+
+before_script:
+  - apt-get update && apt-get install -y curl
+  - curl -fsSL https://ollama.ai/install.sh | sh &
+  - sleep 10
+  - ollama pull llama3.2:3b
+  - pip install -r requirements.txt
+
+vyoma-security-scan:
+  stage: security
+  image: python:3.11
+  script:
+    - echo "Starting VYOMA security scan..."
+    - python vyoma.py -u $CI_TARGET_URL --basic --report-format json
+    - echo "Security scan completed"
+  artifacts:
+    reports:
+      sast: reports/vyoma-report.json
+    paths:
+      - reports/
+    expire_in: 1 week
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

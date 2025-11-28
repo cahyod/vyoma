@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Main Entry Point
+Vyoma AI Security Scanner - Main Entry Point
 Advanced AI-Powered Web Security Scanner for OWASP Top 10 and Beyond
 """
 
@@ -14,7 +14,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from core.scanner_engine import AstravaAIScanner
+from core.scanner_engine import VyomaAIScanner
 from core.config import Config
 from utils.logger import setup_logger
 from utils.banner import display_banner
@@ -22,7 +22,7 @@ from utils.ollama_manager import OllamaManager
 from core.ai_engine import AIEngine
 
 async def main():
-    """Main entry point for Astrava AI Security Scanner"""
+    """Main entry point for Vyoma AI Security Scanner"""
     
     # Display banner
     display_banner()
@@ -40,7 +40,7 @@ async def main():
     
     # Setup argument parser with professional help
     parser = argparse.ArgumentParser(
-        prog='astrava',
+        prog='vyoma',
         description="""
 ╔═══════════════════════════════════════════════════════════════════════╗
 ║                                                                       ║
@@ -56,7 +56,7 @@ async def main():
 ║                                                                       ║
 ╚═══════════════════════════════════════════════════════════════════════╝
 
-ASTRAVA - Professional AI-Powered Web Application Security Scanner
+VYOMA - Professional AI-Powered Web Application Security Scanner
 Combines traditional penetration testing with cutting-edge AI analysis
         """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -91,13 +91,13 @@ Full Scan with All Options:
 SCAN MODES:
 ═══════════════════════════════════════════════════════════════════════
 
-Use astrava.py for simplified mode selection:
-  python astrava.py -u <URL> --basic       # Fast scan (Fast)
-  python astrava.py -u <URL>               # Medium scan (Standard)
-  python astrava.py -u <URL> --aggressive  # Deep scan (Thorough)
+Use vyoma.py for simplified mode selection:
+  python vyoma.py -u <URL> --basic       # Fast scan (Fast)
+  python vyoma.py -u <URL>               # Medium scan (Standard)
+  python vyoma.py -u <URL> --aggressive  # Deep scan (Thorough)
 
 Or launch GUI:
-  python astrava_gui.py                    # Professional GUI interface
+  python vyoma_gui.py                    # Professional GUI interface
 
 ═══════════════════════════════════════════════════════════════════════
 LEGAL NOTICE:
@@ -108,7 +108,7 @@ LEGAL NOTICE:
    - Unauthorized scanning may violate computer crime laws
    - Users are responsible for complying with all applicable laws
 
-For more information: https://github.com/ram-prasad-sahoo/astrava
+For more information: https://github.com/cahyod/vyoma
         """
     )
     
@@ -197,7 +197,7 @@ For more information: https://github.com/ram-prasad-sahoo/astrava
         model=args.model
     )
     
-    scanner = AstravaAIScanner(config, logger)
+    scanner = VyomaAIScanner(config, logger)
     
     try:
         # Run the scan

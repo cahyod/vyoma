@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Astrava AI Security Scanner - Advanced Professional GUI
+Vyoma AI Security Scanner - Advanced Professional GUI
 Large results display, proper encoding, advanced features
 """
 
@@ -19,10 +19,10 @@ import time
 import requests
 import queue
 
-class AstravaAdvancedGUI:
+class VyomaAdvancedGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Astrava AI Security Scanner - Advanced Professional Interface")
+        self.root.title("Vyoma AI Security Scanner - Advanced Professional Interface")
         
         # Get screen dimensions
         screen_width = root.winfo_screenwidth()
@@ -216,7 +216,7 @@ class AstravaAdvancedGUI:
         
         # Title with professional blue accent
         title_label = tk.Label(header_frame, 
-                              text="ASTRAVA AI SECURITY SCANNER", 
+                              text="VYOMA AI SECURITY SCANNER", 
                               font=('Segoe UI', 22, 'bold'),
                               fg='#0066cc', bg='#f5f8fc')
         title_label.pack(pady=(8, 0))
@@ -1246,7 +1246,7 @@ class AstravaAdvancedGUI:
         duration = str(datetime.now() - self.scan_start_time).split('.')[0] if self.scan_start_time else "Unknown"
         
         summary = f"""
-ASTRAVA AI SECURITY SCANNER - DETAILED SCAN SUMMARY
+VYOMA AI SECURITY SCANNER - DETAILED SCAN SUMMARY
 ==================================================
 
 SCAN INFORMATION:
@@ -1536,7 +1536,7 @@ LAST UPDATED: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 def main():
     """Main function"""
     root = tk.Tk()
-    app = AstravaAdvancedGUI(root)
+    app = VyomaAdvancedGUI(root)
     
     def on_closing():
         if app.scanning:
