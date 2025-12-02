@@ -145,7 +145,7 @@ VYOMA has been tested and works perfectly on:
 
 **Step 1: Clone the Repository**
 ```bash
-git clone https://github.com/ram-prasad-sahoo/vyoma.git
+git clone https://github.com/cahyod/vyoma.git
 cd vyoma
 ```
 
