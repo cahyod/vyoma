@@ -60,3 +60,8 @@ markdown>=3.5.0             # Markdown to HTML conversion
 # this automatically if you run them.
 #
 # ================================================================
+# ================================================================
+# LLM Integration - llama.cpp with Qwen2.5 (NEW)
+# ================================================================
+llama-cpp-python>=0.2.0     # Python bindings for llama.cpp
+huggingface-hub>=0.20.0     # For downloading models from HuggingFace
