@@ -1,15 +1,35 @@
 """
 Configuration module for Vyoma AI Security Scanner
+
+This module provides configuration management for the scanner,
+including target settings, scan modes, and performance options.
 """
 
-import os
-from dataclasses import dataclass
-from typing import List, Optional
+from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Optional
+
 
 @dataclass
 class Config:
-    """Configuration class for the scanner"""
+    """Configuration class for the Vyoma security scanner.
+    
+    Attributes:
+        target_url: The URL to scan
+        passive_only: If True, only perform passive reconnaissance
+        active_only: If True, skip passive reconnaissance
+        owasp_all: If True, test all OWASP Top 10 vulnerabilities
+        chain_attacks: If True, enable AI-powered chain attack detection
+        custom_payloads: Path to custom payloads file
+        output_dir: Directory for scan reports
+        report_format: Output format (html, json, pdf)
+        max_threads: Maximum concurrent threads
+        timeout: Request timeout in seconds
+        skip_port_scan: If True, skip port scanning
+        max_crawl_depth: Maximum depth for web crawling
+        model: AI model name for Ollama
+        ollama_url: Ollama API endpoint URL
+    """
     
     # Target configuration
     target_url: str
@@ -31,20 +51,19 @@ class Config:
     max_threads: int = 10
     timeout: int = 30
     
-    # Scan depth settings (for basic/fast mode)
+    # Scan depth settings
     skip_port_scan: bool = False
     max_crawl_depth: int = 3
     
     # AI settings
-    model: str = 'llama3.2:3b'  # Your downloaded model
+    model: str = 'llama3.2:3b'
     ollama_url: str = 'http://localhost:11434'
     
-    def __post_init__(self):
-        """Post-initialization setup"""
+    def __post_init__(self) -> None:
+        """Initialize default values and create output directory."""
         if not self.output_dir:
             self.output_dir = str(Path.cwd() / "reports")
         
-        # Create output directory
         Path(self.output_dir).mkdir(parents=True, exist_ok=True)
 
 # OWASP Top 10 2021 Configuration

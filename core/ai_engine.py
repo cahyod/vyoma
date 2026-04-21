@@ -1,35 +1,56 @@
 """
 AI Engine for Vyoma Security Scanner
-Handles all AI-related operations using Ollama
+
+Handles all AI-related operations using Ollama, including payload generation,
+vulnerability analysis, and report summarization.
 """
 
-import aiohttp
-import json
 import asyncio
-from typing import Dict, List, Optional, Any
-import logging
+import json
+from typing import Any, Dict, List
+
+import aiohttp
+
 
 class AIEngine:
-    """AI Engine for generating payloads, analyzing results, and creating reports"""
+    """AI Engine for generating payloads, analyzing results, and creating reports.
+    
+    This class interfaces with Ollama to provide AI-powered security testing capabilities.
+    
+    Attributes:
+        model: The AI model name to use
+        ollama_url: The Ollama API endpoint URL
+        logger: Logger instance for debug output
+        session: Async HTTP session for API calls
+    """
     
     def __init__(self, model: str = "llama3.2:3b", ollama_url: str = "http://localhost:11434"):
+        """Initialize the AI engine.
+        
+        Args:
+            model: AI model name (default: llama3.2:3b)
+            ollama_url: Ollama API base URL
+        """
         self.model = model
         self.ollama_url = ollama_url
-        self.logger = logging.getLogger(__name__)
         self.session = None
     
     async def __aenter__(self):
-        """Async context manager entry"""
+        """Async context manager entry."""
         self.session = aiohttp.ClientSession()
         return self
     
     async def __aexit__(self, exc_type, exc_val, exc_tb):
-        """Async context manager exit"""
+        """Async context manager exit."""
         if self.session:
             await self.session.close()
     
     async def validate_connection(self) -> bool:
-        """Validate connection to Ollama"""
+        """Validate connection to Ollama and check if model is available.
+        
+        Returns:
+            True if connection successful and model exists, False otherwise
+        """
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(f"{self.ollama_url}/api/tags", timeout=5) as response:
@@ -38,12 +59,25 @@ class AIEngine:
                         models = [model['name'] for model in data.get('models', [])]
                         return self.model in models
             return False
-        except Exception as e:
-            self.logger.error(f"Failed to connect to Ollama: {e}")
+        except Exception:
             return False
     
-    async def query_llama(self, prompt: str, system_prompt: str = "", temperature: float = 0.7) -> str:
-        """Query Ollama with a prompt"""
+    async def query_llama(
+        self, 
+        prompt: str, 
+        system_prompt: str = "", 
+        temperature: float = 0.7
+    ) -> str:
+        """Query Ollama with a prompt.
+        
+        Args:
+            prompt: User prompt to send
+            system_prompt: System instruction for the model
+            temperature: Sampling temperature (0.0-1.0)
+            
+        Returns:
+            Model response text or empty string on error
+        """
         try:
             payload = {
                 "model": self.model,
@@ -59,21 +93,30 @@ class AIEngine:
             if not self.session:
                 self.session = aiohttp.ClientSession()
             
-            async with self.session.post(f"{self.ollama_url}/api/generate", json=payload) as response:
+            async with self.session.post(
+                f"{self.ollama_url}/api/generate", 
+                json=payload
+            ) as response:
                 if response.status == 200:
                     result = await response.json()
                     return result.get('response', '').strip()
-                else:
-                    self.logger.error(f"Ollama API error: {response.status}")
-                    return ""
-        except Exception as e:
-            self.logger.error(f"Error querying Ollama: {e}")
+                return ""
+        except Exception:
             return ""
     
     async def generate_sql_payloads(self, target_info: Dict[str, Any]) -> List[str]:
-        """Generate SQL injection payloads using AI"""
-        system_prompt = """You are a cybersecurity expert specializing in SQL injection testing. 
-        Generate creative and effective SQL injection payloads for penetration testing purposes only."""
+        """Generate SQL injection payloads using AI.
+        
+        Args:
+            target_info: Dictionary containing target URL, database type, and technologies
+            
+        Returns:
+            List of SQL injection payloads (max 10)
+        """
+        system_prompt = (
+            "You are a cybersecurity expert specializing in SQL injection testing. "
+            "Generate creative and effective SQL injection payloads for penetration testing purposes only."
+        )
         
         prompt = f"""
         Generate 10 advanced SQL injection payloads for testing the following target:
@@ -94,12 +137,21 @@ class AIEngine:
         
         response = await self.query_llama(prompt, system_prompt, temperature=0.8)
         payloads = [line.strip() for line in response.split('\n') if line.strip()]
-        return payloads[:10]  # Limit to 10 payloads
+        return payloads[:10]
     
     async def generate_xss_payloads(self, target_info: Dict[str, Any]) -> List[str]:
-        """Generate XSS payloads using AI"""
-        system_prompt = """You are a cybersecurity expert specializing in XSS testing. 
-        Generate creative XSS payloads that can bypass modern filters and WAFs."""
+        """Generate XSS payloads using AI.
+        
+        Args:
+            target_info: Dictionary containing target URL, content type, and security headers
+            
+        Returns:
+            List of XSS payloads (max 10)
+        """
+        system_prompt = (
+            "You are a cybersecurity expert specializing in XSS testing. "
+            "Generate creative XSS payloads that can bypass modern filters and WAFs."
+        )
         
         prompt = f"""
         Generate 10 advanced XSS payloads for testing the following target:
@@ -122,10 +174,22 @@ class AIEngine:
         payloads = [line.strip() for line in response.split('\n') if line.strip()]
         return payloads[:10]
     
-    async def generate_command_injection_payloads(self, target_info: Dict[str, Any]) -> List[str]:
-        """Generate command injection payloads using AI"""
-        system_prompt = """You are a cybersecurity expert specializing in command injection testing. 
-        Generate effective command injection payloads for different operating systems."""
+    async def generate_command_injection_payloads(
+        self, 
+        target_info: Dict[str, Any]
+    ) -> List[str]:
+        """Generate command injection payloads using AI.
+        
+        Args:
+            target_info: Dictionary containing target URL, OS, and server software
+            
+        Returns:
+            List of command injection payloads (max 10)
+        """
+        system_prompt = (
+            "You are a cybersecurity expert specializing in command injection testing. "
+            "Generate effective command injection payloads for different operating systems."
+        )
         
         prompt = f"""
         Generate 10 command injection payloads for testing the following target:
@@ -149,9 +213,18 @@ class AIEngine:
         return payloads[:10]
     
     async def generate_ssrf_payloads(self, target_info: Dict[str, Any]) -> List[str]:
-        """Generate SSRF payloads using AI"""
-        system_prompt = """You are a cybersecurity expert specializing in SSRF testing. 
-        Generate SSRF payloads that can access internal services and cloud metadata."""
+        """Generate SSRF payloads using AI.
+        
+        Args:
+            target_info: Dictionary containing target URL, cloud provider, and internal networks
+            
+        Returns:
+            List of SSRF payloads (max 10)
+        """
+        system_prompt = (
+            "You are a cybersecurity expert specializing in SSRF testing. "
+            "Generate SSRF payloads that can access internal services and cloud metadata."
+        )
         
         prompt = f"""
         Generate 10 SSRF payloads for testing the following target:
@@ -174,11 +247,22 @@ class AIEngine:
         payloads = [line.strip() for line in response.split('\n') if line.strip()]
         return payloads[:10]
     
-    async def analyze_vulnerability(self, vuln_data: Dict[str, Any]) -> Dict[str, str]:
-        """Analyze a vulnerability using AI (optimized for speed)"""
-        system_prompt = """You are a cybersecurity expert. Provide concise vulnerability analysis."""
+    async def analyze_vulnerability(
+        self, 
+        vuln_data: Dict[str, Any]
+    ) -> Dict[str, str]:
+        """Analyze a vulnerability using AI (optimized for speed).
         
-        # Shorter, more focused prompt
+        Args:
+            vuln_data: Dictionary containing vulnerability details
+            
+        Returns:
+            Dictionary with explanation, impact, remediation, prevention, and CVSS score
+        """
+        system_prompt = (
+            "You are a cybersecurity expert. Provide concise vulnerability analysis."
+        )
+        
         prompt = f"""
         Vulnerability: {vuln_data.get('type', 'Unknown')} ({vuln_data.get('severity', 'Unknown')})
         Evidence: {vuln_data.get('evidence', 'None')}
@@ -194,20 +278,31 @@ class AIEngine:
         
         response = await self.query_llama(prompt, system_prompt, temperature=0.1)
         
-        # Simple parsing instead of JSON
         lines = response.strip().split('\n')
         return {
             "explanation": lines[0] if len(lines) > 0 else "Vulnerability detected",
             "impact": lines[1] if len(lines) > 1 else "Potential security risk",
             "remediation": lines[2] if len(lines) > 2 else "Apply security patches",
             "prevention": "Follow security best practices",
-            "cvss_score": "7.5"  # Default score
+            "cvss_score": "7.5"
         }
     
-    async def generate_chain_attack(self, vulnerabilities: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Generate chain attack scenarios using AI"""
-        system_prompt = """You are a cybersecurity expert specializing in advanced persistent threats. 
-        Analyze vulnerabilities and create realistic attack chain scenarios."""
+    async def generate_chain_attack(
+        self, 
+        vulnerabilities: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """Generate chain attack scenarios using AI.
+        
+        Args:
+            vulnerabilities: List of discovered vulnerabilities
+            
+        Returns:
+            List of attack chain scenarios
+        """
+        system_prompt = (
+            "You are a cybersecurity expert specializing in advanced persistent threats. "
+            "Analyze vulnerabilities and create realistic attack chain scenarios."
+        )
         
         vuln_summary = "\n".join([
             f"- {v.get('type', 'Unknown')}: {v.get('severity', 'Unknown')} ({v.get('url', 'Unknown')})"
@@ -237,10 +332,22 @@ class AIEngine:
         except json.JSONDecodeError:
             return []
     
-    async def generate_reconnaissance_analysis(self, recon_data: Dict[str, Any]) -> str:
-        """Generate reconnaissance analysis using AI"""
-        system_prompt = """You are a cybersecurity expert analyzing reconnaissance data. 
-        Provide insights about the target's security posture and potential attack vectors."""
+    async def generate_reconnaissance_analysis(
+        self, 
+        recon_data: Dict[str, Any]
+    ) -> str:
+        """Generate reconnaissance analysis using AI.
+        
+        Args:
+            recon_data: Dictionary containing reconnaissance data
+            
+        Returns:
+            AI-generated analysis text
+        """
+        system_prompt = (
+            "You are a cybersecurity expert analyzing reconnaissance data. "
+            "Provide insights about the target's security posture and potential attack vectors."
+        )
         
         prompt = f"""
         Analyze the following reconnaissance data and provide security insights:
@@ -264,10 +371,22 @@ class AIEngine:
         
         return await self.query_llama(prompt, system_prompt, temperature=0.4)
     
-    async def generate_executive_summary(self, scan_results: Dict[str, Any]) -> str:
-        """Generate executive summary using AI"""
-        system_prompt = """You are a cybersecurity consultant writing an executive summary for C-level executives. 
-        Focus on business impact, risk levels, and strategic recommendations."""
+    async def generate_executive_summary(
+        self, 
+        scan_results: Dict[str, Any]
+    ) -> str:
+        """Generate executive summary using AI.
+        
+        Args:
+            scan_results: Dictionary containing complete scan results
+            
+        Returns:
+            AI-generated executive summary text
+        """
+        system_prompt = (
+            "You are a cybersecurity consultant writing an executive summary for C-level executives. "
+            "Focus on business impact, risk levels, and strategic recommendations."
+        )
         
         vulnerabilities = scan_results.get('vulnerabilities', [])
         risk_score = scan_results.get('risk_score', 0)

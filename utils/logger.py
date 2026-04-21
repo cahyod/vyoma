@@ -1,31 +1,40 @@
 """
 Logging utilities for Vyoma AI Security Scanner
+
+This module provides centralized logging configuration with support for
+console output, file logging, and optional colored output.
 """
 
 import logging
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
+
 
 def setup_logger(name: str = "Vyoma_scanner", verbose: bool = False) -> logging.Logger:
-    """Setup logger with appropriate formatting and handlers"""
+    """Set up and configure a logger with console and file handlers.
     
-    # Create logger
+    Args:
+        name: Logger name (default: "Vyoma_scanner")
+        verbose: If True, set log level to DEBUG; otherwise INFO
+        
+    Returns:
+        Configured logger instance
+    """
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG if verbose else logging.INFO)
     
-    # Clear existing handlers
+    # Clear existing handlers to avoid duplicates
     logger.handlers.clear()
     
-    # Create formatters
+    # Configure formatters
     detailed_formatter = logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     
-    simple_formatter = logging.Formatter(
-        '%(levelname)s: %(message)s'
-    )
+    simple_formatter = logging.Formatter('%(levelname)s: %(message)s')
     
     # Console handler
     console_handler = logging.StreamHandler(sys.stdout)
@@ -45,7 +54,19 @@ def setup_logger(name: str = "Vyoma_scanner", verbose: bool = False) -> logging.
     file_handler.setFormatter(detailed_formatter)
     logger.addHandler(file_handler)
     
-    # Add colored output for console if available
+    # Attempt to add colored output
+    _setup_colored_logging(console_handler)
+    
+    logger.info("Logging initialized. Log file: %s", log_file)
+    return logger
+
+
+def _setup_colored_logging(handler: logging.Handler) -> None:
+    """Attempt to configure colored logging if colorlog is available.
+    
+    Args:
+        handler: The logging handler to configure with colors
+    """
     try:
         import colorlog
         
@@ -59,9 +80,6 @@ def setup_logger(name: str = "Vyoma_scanner", verbose: bool = False) -> logging.
                 'CRITICAL': 'red,bg_white',
             }
         )
-        console_handler.setFormatter(color_formatter)
+        handler.setFormatter(color_formatter)
     except ImportError:
-        pass  # colorlog not available, use simple formatter
-    
-    logger.info(f"Logging initialized. Log file: {log_file}")
-    return logger
+        pass  # colorlog not available, keep simple formatter
